@@ -1,0 +1,137 @@
+<div class="wrapper">
+  <div class="page-header section-dark" style="background-image: url('assets/img/okta_blue_bg.png')">
+
+    <div class="fxcontainer" fxLayout="row wrap" fxLayoutAlign="center">
+
+      <mat-tab-group class="containerTab">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">apps</mat-icon>
+            My アプリ
+          </ng-template>
+
+          <div class="containerURL" fxLayout="row wrap" fxLayoutAlign="center center">
+            <div class="item">
+              <div></div>
+              <div class="appLabel btnHeading">表示するアプリの操作</div>
+              <div class="goBtn">
+                <a class="btn btn-reg-danger btn-round" class="btn btn-danger btn-round ctrBtn" id="logout"
+                  (click)="DelApps()">アプリのアサインを外す</a><br /><br />
+                <a class="btn btn-reg-danger btn-round" class="btn btn-danger btn-round ctrBtn" id="logout"
+                  (click)="AddApps()">アプリをアサインする</a>
+              </div>
+            </div>
+            <!-- </div> -->
+
+            <!-- <div class="containerURL" fxLayout="row wrap" fxLayoutAlign="center center"> -->
+            <div class="item" *ngFor="let itemApp of arrApplicationInfo">
+              <div><img src="{{ itemApp.appImage }}" class="appBanner"></div>
+              <div class="appLabel">{{ itemApp.appLabel }}</div>
+              <div class="goBtn"><a class="btn btn-reg-danger btn-round" class="btn btn-danger btn-round btnAppLink"
+                  href="{{ itemApp.appSignonURI }}" target="_blank">Go</a></div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">manage_accounts</mat-icon>
+            プロファイル
+          </ng-template>
+          <div class="containerURL" fxLayout="row wrap" fxLayoutAlign="center center">
+
+            <div class="profileCard" fxLayout="columns" fxLayoutAlign="left">
+              <div class="profileLeftCard">
+                <img src="assets/img/okta_user_icon_white.png" class="profileImg">
+              </div>
+              <div class="profileRightCard">
+                <mat-form-field class="ProfileFirstName" appearance="fill">
+                  <mat-label>氏名</mat-label>
+                  <input matInput value="{{ GetUserinfoService.strFullname }}">
+                </mat-form-field>
+
+                <mat-form-field class="ProfileFirstName" appearance="fill">
+                  <mat-label>アカウントのステータス</mat-label>
+                  <input matInput value="{{ GetUserinfoService.UserStatus }}">
+                </mat-form-field>
+
+                <mat-form-field class="ProfileFirstName" appearance="fill">
+                  <mat-label>アカウント作成日</mat-label>
+                  <input matInput value="{{ GetUserinfoService.AccountCreatedDate }}">
+                </mat-form-field>
+
+                <mat-form-field class="ProfileFirstName" appearance="fill">
+                  <mat-label>パスワード変更日</mat-label>
+                  <input matInput value="{{ GetUserinfoService.PasswordLastChangedDate }}">
+                </mat-form-field>
+
+              </div>
+            </div>
+
+            <div class="profileCard" fxLayout="columns" fxLayoutAlign="left">
+              <div class="profileLeftCard">
+                <img src="assets/img/okta_office_small_blue.png" class="profileImg">
+              </div>
+              <div class="profileRightCard">
+                <mat-form-field class="ProfileFirstName" appearance="fill">
+                  <mat-label>住所</mat-label>
+                  <input matInput value="{{ GetUserinfoService.UserStreetAddress  }}">
+                </mat-form-field>
+
+                <mat-form-field class="ProfileFirstName" appearance="fill">
+                  <mat-label>市町村</mat-label>
+                  <input matInput value="{{ GetUserinfoService.UserLocality }}">
+                </mat-form-field>
+
+                <mat-form-field class="ProfileFirstName" appearance="fill">
+                  <mat-label>国</mat-label>
+                  <input matInput value="{{ GetUserinfoService.UserCountry }}">
+                </mat-form-field>
+
+                <mat-form-field class="ProfileFirstName" appearance="fill">
+                  <mat-label>〒</mat-label>
+                  <input matInput value="{{ GetUserinfoService.UserZip }}">
+                </mat-form-field>
+
+              </div>
+            </div>
+
+
+            <!-- <div class="profileCard" fxLayout="columns" fxLayoutAlign="left">
+              <div class="profileLeftCard">
+                <img src="assets/img/okta_key_small_white.png" class="profileImg">
+              </div>
+              <div class="profileRightCard">
+
+                <div class="dashboardButtons" fxLayout="column" fxLayoutAlign="center left">
+                  <div class="divProfileUpdate">
+                    <a class="lblProfileUpdate">パスワードリセット</a>
+                    <a class="btn btn-reg-danger btn-round" class="btn btn-danger btn-round" id="pwReset"
+                      (click)="pwReset()">リセット</a>
+                  </div>
+                  <div class="divProfileUpdate">
+                    <a class="lblProfileUpdate">MFAリセット</a>
+                    <a class="btn btn-reg-danger btn-round" class="btn btn-danger btn-round" id="logout"
+                      (click)="Logout()">MFAリセット</a>
+                  </div>
+                </div>
+
+
+              </div>
+            </div> -->
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      <!-- </div> -->
+      <!-- <div class="bottomBanner">
+        <img src="assets/img/okta_japan_white_medium.png" alt=""  id="bottomBanner">
+      </div> -->
+      <div><br /><h1 class="lblWelcome">ようこそ{{this.OktaGetTokenService.strUserName}}</h1></div>
+    </div>
+
+  </div>
+
+
+
+
+</div>
